@@ -1,7 +1,7 @@
 import react, { useState } from 'react';
 import { ImageBackground, Image, Pressable, StyleSheet, Text, TextInput, View, StatusBar } from 'react-native';
 
-export default function LoginScreen() {
+export default function LoginScreen({navigation}) {
 
     const [inputEmail, setInputEmail] = useState('')
     const [inputSenha, setInputSenha] = useState('')
@@ -41,7 +41,7 @@ export default function LoginScreen() {
 
                             <Pressable 
                                 style={styles.botaoAcessar}
-                                onPress={() => {}}>
+                                onPress={() => navigation.navigate('Home')}>
                                 <Text>Entrar</Text>
                             </Pressable>
                         </View>
