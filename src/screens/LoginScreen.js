@@ -28,7 +28,8 @@ export default function LoginScreen({navigation}) {
                         style={styles.input}
                         placeholder = 'Senha'
                         placeholderTextColor={'#63877E'}
-                        value={inputEmail}
+                        secureTextEntry={true}
+                        value={inputSenha}
                         onChangeText={value => setInputSenha(value)}
                         />
 
@@ -87,12 +88,12 @@ const styles = StyleSheet.create({
     },
     input: {
        backgroundColor: '#e9e9e9',
-       borderRadius: 5,
-       padding: 5,
+       borderRadius: 15,
+       padding: 10,
        marginTop: 10,
        marginBottom: 10,
-       width: 250,
-       height: 40,
+       width: 325,
+       height: 50,
 
     },
     botoes: {
@@ -102,11 +103,11 @@ const styles = StyleSheet.create({
         marginTop: 25
     },
     botaoAcessar: {
-        width: 75,
-        height: 35, 
+        width: 100,
+        height: 50, 
         backgroundColor: 'orange',
         padding: 5,
-        borderRadius: 15,
+        borderRadius: 25,
         alignItems:'center',
         justifyContent: 'center'
 
