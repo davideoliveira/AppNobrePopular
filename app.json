@@ -28,6 +28,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f91451a1-0ccd-4d96-84a6-50c177b74d9c"
+      }
+    },
+    "owner": "davisa1"
   }
 }
