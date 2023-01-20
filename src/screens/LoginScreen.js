@@ -7,8 +7,8 @@ export default function LoginScreen({navigation}) {
     const [inputSenha, setInputSenha] = useState('')
     return (
         <View style={styles.container}>
-            <ImageBackground source={require('../imgs/fundoNobrePopular.jpg')}>
-                <Image source={require('../imgs/logoNobrePopular1.jpg')} style={{width: '100%', height:150}}/>
+            <ImageBackground source={require('../../assets/imgs/fundoNobrePopular.jpg')}>
+                <Image source={require('../../assets/imgs/logoNobrePopular1.jpg')} style={{width: '100%', height:150}}/>
                 
                 <View style={styles.content}>
 
@@ -51,9 +51,9 @@ export default function LoginScreen({navigation}) {
 
                     <Text style={styles.textredesocial}>Entre usando:</Text>
                     <View style={styles.redessociais}>
-                        <Image source={require('../icons/apple.png')} style={styles.icons}/>
-                        <Image source={require('../icons/GMAIL.png')} style={styles.icons}/>
-                        <Image source={require('../icons/microsoft.png')} style={styles.icons}/>
+                        <Image source={require('../../assets/icons/apple.png')} style={styles.icons}/>
+                        <Image source={require('../../assets/icons/GMAIL.png')} style={styles.icons}/>
+                        <Image source={require('../../assets/icons/microsoft.png')} style={styles.icons}/>
                     </View>
 
                     <View style={styles.cadastro}>

@@ -1,75 +1,83 @@
 import React from 'react';
-import { StyleSheet, Image, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, Image, Text, View, FlatList, Pressable, ScrollView } from 'react-native';
+import { dbcategorias, dbpropaganda } from '../constants/fakeApi';
 
-import Carousel, { ParallaxImage } from 'react-native-snap-carousel'
 
-const { width } = Dimensions.get('window')
 
 export default function HomeScreen() {
 
-    const data = [
-        {
-            imgUrl: "https://scontent.fcgh2-1.fna.fbcdn.net/v/t39.30808-6/296724753_563860588550563_4951329833204329998_n.jpg?stp=dst-jpg_p526x296&_nc_cat=100&ccb=1-7&_nc_sid=9267fe&_nc_ohc=50nA5YkLJTwAX_teJxb&_nc_ht=scontent.fcgh2-1.fna&oh=00_AfA5zDb8DMtbxeMOecXzktfOVJmPG-dc9b1UXJfc4yai7g&oe=63CE901A",
-          },
-        {
-          imgUrl: "https://scontent.fcgh2-1.fna.fbcdn.net/v/t39.30808-6/299127506_572839517652670_694975961580244906_n.jpg?stp=dst-jpg_p526x296&_nc_cat=103&ccb=1-7&_nc_sid=9267fe&_nc_ohc=1OXqThux3KsAX_zaJLT&_nc_ht=scontent.fcgh2-1.fna&oh=00_AfA2LJ5vB214D7OUUq1Hi6CQXpVf3PkW78qqLJfHzTRuug&oe=63CE6EB3",
-        },
-        {
-          imgUrl: "https://scontent.fcgh2-1.fna.fbcdn.net/v/t39.30808-6/298087547_572839067652715_6338806114902372333_n.jpg?stp=dst-jpg_p526x296&_nc_cat=110&ccb=1-7&_nc_sid=9267fe&_nc_ohc=w9w-Hya37ZsAX9LELB6&_nc_oc=AQlyN5P1Z0Gl9NdsUNt2wFesLqHTaKzdln0QssYIrulxd5pfG1W2FbKISzcfGqi9vTjY9wj7UwZ7AY_-tQGj0Yx0&_nc_ht=scontent.fcgh2-1.fna&oh=00_AfCISrv7Sa_F_BFTuwexhpSccDrmFpFIYVqwTgc84-VtqA&oe=63CEB6B6",
-        },
-        {
-          imgUrl: "https://scontent.fcgh2-1.fna.fbcdn.net/v/t39.30808-6/294780661_561680655435223_7252242019487505528_n.jpg?stp=dst-jpg_p526x296&_nc_cat=108&ccb=1-7&_nc_sid=9267fe&_nc_ohc=41YZwAVsGqMAX_5A0-c&_nc_ht=scontent.fcgh2-1.fna&oh=00_AfB61Efm3xB9jZYe-msdt1U8lXT4TDVc3Uccs7IYvUP-ag&oe=63CE7615",
-        },
-    ];
-
-    const CarouselCardItem = ({ item, index }, parallaxProps) => {
-    return (
-        <View style={styles.carrossel} >
-            <ParallaxImage
-                    source={{ uri: item.imgUrl }}
-                    containerStyle={styles.imageContainer}
-                    style={styles.image}
-                    parallaxFactor={0}
-                    {...parallaxProps}
-                />
-          
-        </View>
-    )
-    }
-
+ 
 
       
 
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
 
         <View style={styles.header}>
-            <Image source={require('../imgs/logoSemfundo.png')} style={styles.logoheader}></Image>
+
+            <Image source={require('../../assets/imgs/logoSemfundo.png')} style={styles.logoheader}></Image>
             <View style={styles.areaiconsheader}>
-                <Image style={styles.iconsheader} source={require('../icons/pesquisa.png')}></Image>
-                <Image style={styles.iconsheader} source={require('../icons/carrinho.png')}></Image>
+                <Image style={styles.iconsheader} source={require('../../assets/icons/pesquisa.png')}></Image>
+                <Image style={styles.iconsheader} source={require('../../assets/icons/carrinho.png')}></Image>
 
             </View>
         </View>
 
-        <Carousel
-        data={data}
-        renderItem={CarouselCardItem}
-        sliderWidth={width}
-        sliderHeight={width}
-        itemWidth={275}
-        hasParallaxImages={true}
+        <FlatList
+            data={dbpropaganda}
+            horizontal
+            style={{flexGrow: 0 }}
+            showsHorizontalScrollIndicator={false}
+            renderItem={({item, index}) => (
+                <Pressable style={styles.propaganda}>
+                    <Image source={item.imgUrl} style={styles.imagepropaganda}/>
+                </Pressable>
+            )}
+
         />
-        <Text>ver</Text>
-        <Text>Teste</Text>
-    </View>
+
+        <FlatList
+            data={dbcategorias}
+            horizontal
+            style={{flexGrow: 0 }}
+            showsHorizontalScrollIndicator={false}
+            renderItem={({item, index}) => (
+                <Pressable style={styles.categorias}>
+                    <Image source={item.imgUrl} style={styles.imagecategorias}/>
+                    <Text style={styles.textcategoria}>{item.text}</Text>
+                </Pressable>
+            )}
+
+        />
+
+        <View style={styles.topico}>
+            <Text style={styles.textTopico}>Mais Vendidos</Text>
+            <FlatList
+            data={dbcategorias}
+            horizontal
+            style={{flexGrow: 0 }}
+            showsHorizontalScrollIndicator={false}
+            renderItem={({item, index}) => (
+                <Pressable style={styles.categorias}>
+                    <Image source={item.imgUrl} style={styles.imagecategorias}/>
+                    <Text style={styles.textcategoria}>{item.text}</Text>
+                </Pressable>
+            )}
+
+        />
+        </View>
+
+
+        
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+
     },
     header: {
         width: '100%',
@@ -97,15 +105,55 @@ const styles = StyleSheet.create({
         height: 25
 
     },
-    carrossel: {
+    propaganda: {
+        width: 290,
+        height: 275,
+        borderRadius:10,
+        // backgroundColor: 'black',
+        alignItems: 'center',
+        marginBottom: 25
+        
+
+    },
+    imagepropaganda: {
         width: 275,
         height: 275,
+        borderRadius: 10,
+        borderColor: '#d3d3d3',
+        borderWidth: 1
+    },
+    categorias: {
+        marginLeft: 5,
+        width: 90,
+        height: 125,
+        // backgroundColor: 'orange',
+        alignItems: 'center',
 
     },
-      imageContainer: {
-        flex: 1,
-        borderRadius: 8,
+    imagecategorias: {
+        width: 75,
+        height: 75,
+        borderRadius: 50,
+        borderColor: '#d3d3d3',
+        borderWidth: 1
+    },
+    textcategoria: {
+        marginTop: 5,
+        fontSize: 12
     },
 
+    topico: {
+        paddingLeft: 10,
+        paddingTop: 25,
+        borderTopColor: '#d3d3d3',
+        borderTopWidth: 1
+    },
+    textTopico: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginBottom: 10
+
+    }
+    
 
 })
