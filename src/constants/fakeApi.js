@@ -36,3 +36,60 @@ export const dbcategorias = [
     }
 
 ]
+
+export const dbprodutos = [
+    {
+        img: require('../../assets/imgs/produtos/produto1.webp'),
+        text: 'Remedio',
+        precoTotal: 'R$ 5,99',
+        precoDescontado: 'R$ 3,99'
+    },
+    {
+        img: require('../../assets/imgs/produtos/produto2.jpg'),
+        text: 'Remedio',
+        precoTotal: 'R$ 5,99',
+        precoDescontado: 'R$ 3,99'
+    },
+    {
+        img: require('../../assets/imgs/produtos/produto3.webp'),
+        text: 'remedio',
+        precoTotal: 'R$ 5,99',
+        precoDescontado: 'R$ 3,99'
+    },
+    {
+        img: require('../../assets/imgs/produtos/produto4.jpg'),
+        text: 'remedio',
+        precoTotal: 'R$ 5,99',
+        precoDescontado: 'R$ 3,99'
+    },
+]
+
+export const dbpublicidade = [
+    {
+        img: require('../../assets/imgs/propaganda/propagandafralda.jpg')
+    },
+    {
+        img: require('../../assets/imgs/propaganda/propagandafralda.jpg')
+    },
+]
+
+export const dblogomarcas = [
+    {
+        img: require('../../assets/imgs/logo/gillete.png')
+    },
+    {
+        img: require('../../assets/imgs/logo/logopampers.png')
+    },
+    {
+        img: require('../../assets/imgs/logo/dove.png')
+    },
+    {
+        img: require('../../assets/imgs/logo/logopampers.png')
+    },
+    {
+        img: require('../../assets/imgs/logo/gillete.png')
+    },
+    {
+        img: require('../../assets/imgs/logo/dove.png')
+    },
+]

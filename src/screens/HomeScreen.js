@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Image, Text, View, FlatList, Pressable, ScrollView } from 'react-native';
-import { dbcategorias, dbpropaganda } from '../constants/fakeApi';
+import { dbcategorias, dbprodutos, dbpropaganda, dbpublicidade, dblogomarcas } from '../constants/fakeApi';
 
 
 
@@ -53,20 +53,89 @@ export default function HomeScreen() {
 
         <View style={styles.topico}>
             <Text style={styles.textTopico}>Mais Vendidos</Text>
+
             <FlatList
-            data={dbcategorias}
+            data={dbprodutos}
+            horizontal
+            style={{flexGrow: 0 }}
+            showsHorizontalScrollIndicator={false}
+            renderItem={({item, index}) => (
+                <Pressable style={styles.produtos}>
+                    <Image source={item.img} style={styles.imageProdutos}/>
+                    <Text style={styles.textProdutos}>{item.text}</Text>
+                    
+                    <View style={styles.textdescricao}>
+                        <View>
+                        <Text style={styles.textProdtotal}>{item.precoTotal}</Text>
+                        <Text style={styles.textProdDescontado}>{item.precoDescontado}</Text>
+                        </View>
+                        <Image style={styles.imageAdicionar} source={require('../../assets/icons/botao-adicionar.png')}/>
+                        
+                    </View>
+                </Pressable>
+            )}/>
+
+        </View>
+
+        <View style={styles.topicoPublicidade}>
+
+            <Pressable style={styles.publicidade}>
+                <Image source={require('../../assets/imgs/propaganda/propagandafralda.jpg')} style={styles.imagePublicidade}/>
+            </Pressable>
+
+            <Pressable style={styles.publicidade}>
+                <Image source={require('../../assets/imgs/propaganda/propagandajohnsons.jpg')} style={styles.imagePublicidade}/>
+            </Pressable>
+
+        </View>
+
+        <View style={styles.topico}>
+            <Text style={styles.textTopico}>Ofertas do Dia</Text>
+
+            <FlatList
+            data={dbprodutos}
+            horizontal
+            style={{flexGrow: 0 }}
+            showsHorizontalScrollIndicator={false}
+            renderItem={({item, index}) => (
+                <Pressable style={styles.produtos}>
+                    <Image source={item.img} style={styles.imageProdutos}/>
+                    <Text style={styles.textProdutos}>{item.text}</Text>
+                    
+                    <View style={styles.textdescricao}>
+                        <View>
+                        <Text style={styles.textProdtotal}>{item.precoTotal}</Text>
+                        <Text style={styles.textProdDescontado}>{item.precoDescontado}</Text>
+                        </View>
+                        <Image style={styles.imageAdicionar} source={require('../../assets/icons/botao-adicionar.png')}/>
+                        
+                    </View>
+                </Pressable>
+            )}/>
+
+        </View>
+
+        <View style={styles.topicoPublicidade}>
+
+            <Pressable style={styles.publicidade}>
+                <Image source={require('../../assets/imgs/propaganda/propagandasabonete.jpg')} style={styles.imagePublicidade}/>
+            </Pressable>
+
+        </View>
+
+        <FlatList
+            data={dblogomarcas}
             horizontal
             style={{flexGrow: 0 }}
             showsHorizontalScrollIndicator={false}
             renderItem={({item, index}) => (
                 <Pressable style={styles.categorias}>
-                    <Image source={item.imgUrl} style={styles.imagecategorias}/>
+                    <Image source={item.img} style={styles.imagecategorias}/>
                     <Text style={styles.textcategoria}>{item.text}</Text>
                 </Pressable>
             )}
 
         />
-        </View>
 
 
         
@@ -77,6 +146,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#FFF'
 
     },
     header: {
@@ -143,16 +213,87 @@ const styles = StyleSheet.create({
     },
 
     topico: {
+        width: '100%',
         paddingLeft: 10,
+        paddingRight: 10,
         paddingTop: 25,
         borderTopColor: '#d3d3d3',
-        borderTopWidth: 1
+        borderTopWidth: 1,
+        marginBottom: 25
     },
     textTopico: {
         fontSize: 20,
         fontWeight: 'bold',
-        marginBottom: 10
+        marginBottom: 10,
+        paddingLeft: 5,
+    },
+    produtos: {
+        width: 175,
+        height: 250,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderColor: '#e9e9e9',
+        borderWidth: 1,
+        borderRadius: 15,
+        margin: 5,
+        // backgroundColor: 'orange',
+    },
 
+    imageProdutos: {
+        width: 130,
+        height: 130,
+        alignItems: 'center',
+        margin: 10
+    },
+    textdescricao: {
+        width: '100%',
+        paddingLeft: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginTop: 10
+    },
+    textProdutos: {
+        fontSize: 17,
+        fontWeight: 'bold',
+        textAlign: 'center'
+    },
+    textProdtotal: {
+        fontSize: 12,
+        color: '#909090'
+        
+    },
+    textProdDescontado: {
+        fontWeight: 'bold',
+        fontSize: 18,
+    },
+    imageAdicionar: {
+        width: 45,
+        height: 45,
+    },
+    topicoPublicidade: {
+        width: '100%',
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingTop: 25,
+        borderTopColor: '#d3d3d3',
+        borderTopWidth: 1,
+        marginBottom: 25,
+        alignItems: 'center',
+        
+    },
+    publicidade: {
+        width: '100%',
+        height: 125,
+        alignItems: 'center',
+        borderRadius: 25,
+        margin: 10,
+        borderColor: '#e9e9e9',
+        borderWidth: 1,
+    },
+    imagePublicidade: {
+        width:'100%',
+        borderRadius: 25,
+        height: 125
     }
     
 
