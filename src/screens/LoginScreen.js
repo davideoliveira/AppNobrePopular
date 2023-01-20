@@ -42,7 +42,7 @@ export default function LoginScreen({navigation}) {
 
                             <Pressable 
                                 style={styles.botaoAcessar}
-                                onPress={() => navigation.navigate('Home')}>
+                                onPress={() => navigation.navigate('BottomTab')}>
                                 <Text>Entrar</Text>
                             </Pressable>
                         </View>
