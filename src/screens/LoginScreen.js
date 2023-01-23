@@ -22,6 +22,7 @@ export default function LoginScreen({navigation}) {
                         placeholderTextColor={'#63877E'}
                         value={inputEmail}
                         onChangeText={value => setInputEmail(value)}
+                        
                         />
 
                         <TextInput
