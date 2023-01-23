@@ -12,6 +12,7 @@ export default function HomeScreen() {
         <FlatList
             data={dbpropaganda}
             horizontal
+            showsVerticalScrollIndicator={false}
             style={{flexGrow: 0 }}
             showsHorizontalScrollIndicator={false}
             renderItem={({item, index}) => (
@@ -59,6 +60,7 @@ export default function HomeScreen() {
                     </View>
                 </Pressable>
             )}/>
+
 
         </View>
 
