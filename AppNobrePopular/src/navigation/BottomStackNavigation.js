@@ -17,7 +17,7 @@ export default function BottomTab() {
        }}
         screenOptions={{
             unmountOnBlur: true,
-            tabBarStyle: { height: Platform.OS === 'ios' ? 100 : 50 },
+            tabBarStyle: { height: Platform.OS === 'ios' ? 100 : 60 },
         }}>
 
         <Tab.Screen 
