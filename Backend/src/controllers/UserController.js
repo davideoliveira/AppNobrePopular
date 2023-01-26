@@ -6,6 +6,7 @@ const responseModel = {
 
 module.exports = {
     
+    
     async createUser(req,resp) {
         const response = {...responseModel}
 
