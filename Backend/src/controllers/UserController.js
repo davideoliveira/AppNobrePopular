@@ -31,15 +31,14 @@ module.exports = {
     async login(req, resp) {
         try{
             const response = {...responseModel}
-    
             const {username, senha } = req.body
-    
-            if (username == 'davisa1' && senha == '1234'){
-                return resp.json({msg: 'Acesso autorizado'})
-            }else{
-                return resp.json({msg: 'Acesso negado'})
-            }
+            const [userbd] = await connection.execute(`select * from usuario where username = '${username}';`)
 
+            if(username == userbd[0].username && senha == userbd[0].senha){
+                return resp.send({auth: true, username: username, msg: 'Acesso autorizado'})
+            }else {
+                return resp.send({auth: false, username: username, msg: 'Acesso negado'})
+            }
 
         }catch(error){
             return resp.send({ erro: error.message})
